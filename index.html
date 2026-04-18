@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Flow — Massothérapie & Accompagnement du corps | Léa Serrano</title>
+  <meta name="description" content="Nova Flow — Massothérapie et accompagnement du corps par Léa Serrano. Séances personnalisées, drainage lymphatique, massage sportif & deep tissue. Saint-Sulpice-la-Pointe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --vert: #2C3B2D;
+      --vert-dark: #1e2a1f;
+      --or: #C9A84C;
+      --or-dark: #b8963d;
+      --creme: #F5F0E8;
+      --texte: #4a5a4b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--creme);
+      color: var(--vert);
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--vert);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      color: var(--creme);
+      font-size: 14px;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+    .nav-logo span {
+      color: var(--or);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(245,240,232,0.75);
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--or); }
+
+    /* ─── BOUTONS ─── */
+    .btn-gold {
+      background: var(--or);
+      color: var(--vert);
+      border: none;
+      padding: 14px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-gold:hover { background: var(--or-dark); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--creme);
+      border: 1px solid rgba(245,240,232,0.3);
+      padding: 14px 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+      margin-left: 1rem;
+    }
+    .btn-outline:hover { border-color: var(--or); color: var(--or); }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--vert);
+      min-height: 95vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.1);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-icon { color: var(--or); font-size: 24px; letter-spacing: 8px; margin-bottom: 1.5rem; opacity: 0.9; }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 600;
+      color: var(--creme);
+      letter-spacing: 6px;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .hero h1 span {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--or);
+      font-size: clamp(40px, 7vw, 72px);
+      letter-spacing: 2px;
+    }
+    .hero-sep {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin: 1.5rem 0;
+    }
+    .hero-sep-line { width: 60px; height: 1px; background: var(--or); opacity: 0.6; }
+    .hero-sep-text { font-size: 10px; letter-spacing: 4px; color: var(--or); font-weight: 500; }
+    .hero-name { font-size: 11px; letter-spacing: 3px; color: rgba(245,240,232,0.45); margin-bottom: 2rem; text-transform: uppercase; }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(16px, 2.5vw, 22px);
+      color: rgba(245,240,232,0.72);
+      margin-bottom: 2.5rem;
+      line-height: 1.65;
+    }
+    .hero-keywords { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap; }
+    .hero-keywords span { font-size: 10px; letter-spacing: 2.5px; color: rgba(245,240,232,0.4); text-transform: uppercase; }
+    .hero-keywords .dot { color: var(--or); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 940px; margin: 0 auto; }
+    .section-label { font-size: 10px; letter-spacing: 4px; color: var(--or); text-transform: uppercase; font-weight: 500; margin-bottom: 0.75rem; text-align: center; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 600;
+      color: var(--vert);
+      text-align: center;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .section-sep { width: 50px; height: 1px; background: var(--or); margin: 0 auto 2.5rem; opacity: 0.7; }
+
+    /* ─── À PROPOS ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .about-text p { font-size: 13px; line-height: 1.85; color: var(--texte); margin-bottom: 1rem; }
+    .canada-badge {
+      background: var(--vert);
+      border-left: 3px solid var(--or);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .canada-badge .badge-label {
+      font-size: 9px; letter-spacing: 2.5px; color: var(--or);
+      text-transform: uppercase; font-weight: 500; margin-bottom: 0.4rem;
+    }
+    .canada-badge p { font-size: 12px; color: rgba(245,240,232,0.75); line-height: 1.7; margin: 0; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .stat-card { background: var(--vert); padding: 1.1rem; text-align: center; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--or); font-weight: 600; line-height: 1; margin-bottom: 3px; }
+    .stat-label { font-size: 9px; letter-spacing: 2px; color: rgba(245,240,232,0.55); text-transform: uppercase; }
+    .about-visual { background: var(--vert); padding: 2.5rem 2rem; text-align: center; }
+    .about-visual-inner { border: 1px solid rgba(201,168,76,0.28); padding: 2rem 1.5rem; }
+    .av-icon { color: var(--or); font-size: 20px; letter-spacing: 6px; margin-bottom: 1.5rem; }
+    .av-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--creme); margin-bottom: 5px; font-style: italic; }
+    .av-title { font-size: 10px; letter-spacing: 3px; color: var(--or); text-transform: uppercase; margin-bottom: 1.25rem; }
+    .av-sep { width: 28px; height: 1px; background: var(--or); margin: 0 auto 1.25rem; opacity: 0.5; }
+    .av-tagline { font-size: 11px; color: rgba(245,240,232,0.5); line-height: 1.8; letter-spacing: 0.5px; }
+    .av-section { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(201,168,76,0.18); }
+    .av-section-label { font-size: 9px; letter-spacing: 2px; color: var(--or); text-transform: uppercase; margin-bottom: 0.6rem; }
+    .av-section p { font-size: 12px; color: rgba(245,240,232,0.65); line-height: 1.6; }
+
+    /* ─── PRESTATIONS ─── */
+    .prestations-bg { background: var(--vert); }
+    .prestations-bg .section-title { color: var(--creme); }
+    .pres-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .pres-card {
+      background: var(--vert-dark);
+      border: 1px solid rgba(201,168,76,0.18);
+      padding: 2rem 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .pres-card:hover { border-color: var(--or); transform: translateY(-3px); }
+    .pres-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; color: rgba(201,168,76,0.15); font-weight: 600; line-height: 1; margin-bottom: 0.5rem; }
+    .pres-name { font-size: 11px; letter-spacing: 2px; color: var(--creme); font-weight: 600; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .pres-desc { font-size: 13px; color: rgba(245,240,232,0.6); line-height: 1.7; margin-bottom: 1.1rem; }
+    .pres-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ptag { font-size: 9px; letter-spacing: 1.5px; color: var(--or); background: rgba(201,168,76,0.1); padding: 4px 10px; text-transform: uppercase; font-weight: 500; }
+    .pres-info {
+      margin-top: 2rem;
+      background: var(--vert-dark);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 1.75rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .pres-info-col { flex: 1; min-width: 180px; }
+    .pres-info-label { font-size: 9px; letter-spacing: 3px; color: var(--or); text-transform: uppercase; font-weight: 500; margin-bottom: 0.5rem; }
+    .pres-info-val { font-size: 13px; color: rgba(245,240,232,0.65); letter-spacing: 0.5px; line-height: 1.8; }
+    .pres-info-divider { width: 1px; height: 50px; background: rgba(201,168,76,0.2); flex-shrink: 0; }
+
+    /* ─── TARIFS ─── */
+    .tarifs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.5rem; }
+    .tcard {
+      border: 1px solid rgba(44,59,45,0.18);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      background: #fff;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .tcard:hover { border-color: var(--or); }
+    .tcard.featured { border: 2px solid var(--or); }
+    .feat-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--or); color: var(--vert);
+      font-size: 9px; letter-spacing: 2px;
+      padding: 4px 14px; font-weight: 600;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .tdur { font-size: 10px; letter-spacing: 3px; color: var(--or); text-transform: uppercase; margin-bottom: 0.75rem; }
+    .tprice { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; color: var(--vert); line-height: 1; margin-bottom: 3px; }
+    .tprice sup { font-size: 20px; vertical-align: top; margin-top: 8px; }
+    .tnote { font-size: 11px; color: #7a8a7b; margin-top: 0.4rem; line-height: 1.5; }
+    .teco { font-size: 11px; color: var(--or); font-weight: 600; margin-top: 0.5rem; letter-spacing: 0.5px; }
+    .tarifs-disclaimer { text-align: center; margin-top: 2rem; font-size: 12px; color: #7a8a7b; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+
+    /* ─── RÉSERVATION ─── */
+    .resa-bg { background: var(--vert); }
+    .resa-bg .section-title { color: var(--creme); }
+    .resa-form {
+      background: var(--vert-dark);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 2.5rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+    .form-group label { font-size: 9px; letter-spacing: 2px; color: var(--or); text-transform: uppercase; font-weight: 500; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(245,240,232,0.06);
+      border: 1px solid rgba(201,168,76,0.22);
+      color: var(--creme);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(245,240,232,0.3); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--or); }
+    .form-group select option { background: var(--vert); color: var(--creme); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; background: var(--or); color: var(--vert);
+      border: none; padding: 15px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px; letter-spacing: 3px; font-weight: 600;
+      text-transform: uppercase; cursor: pointer; margin-top: 1.25rem;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--or-dark); }
+    .form-note { font-size: 11px; color: rgba(245,240,232,0.4); margin-top: 0.75rem; font-style: italic; text-align: center; font-family: 'Cormorant Garamond', serif; }
+    .success-msg {
+      display: none; background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 1.5rem; text-align: center; margin-top: 1rem;
+    }
+    .success-msg p { color: var(--or); font-size: 13px; letter-spacing: 1px; line-height: 1.6; }
+
+    /* ─── CONTACT ─── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .contact-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; align-items: flex-start; }
+    .contact-icon { width: 36px; height: 36px; background: var(--vert); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-icon svg { width: 14px; height: 14px; stroke: var(--or); fill: none; stroke-width: 1.5; }
+    .contact-label { font-size: 9px; letter-spacing: 2px; color: var(--or); text-transform: uppercase; font-weight: 500; margin-bottom: 3px; }
+    .contact-val { font-size: 13px; color: var(--vert); line-height: 1.55; }
+    .contact-map {
+      background: var(--vert); padding: 2rem; text-align: center;
+    }
+    .contact-map h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--creme); font-weight: 600; margin-bottom: 0.75rem; line-height: 1.3; }
+    .contact-map-sep { width: 28px; height: 1px; background: var(--or); margin: 0.75rem auto; opacity: 0.6; }
+    .contact-map-addr { font-size: 12px; color: rgba(245,240,232,0.55); line-height: 1.9; margin-bottom: 1.5rem; }
+
+    /* ─── FOOTER ─── */
+    footer { background: #1e2a1f; padding: 2rem; text-align: center; }
+    .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 4px; color: rgba(245,240,232,0.3); font-weight: 600; margin-bottom: 5px; }
+    .footer-logo span { font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(201,168,76,0.4); }
+    .footer-copy { font-size: 10px; color: rgba(245,240,232,0.18); letter-spacing: 1px; margin-top: 3px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .pres-grid { grid-template-columns: 1fr; }
+      .tarifs-grid { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
+      .form-row { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 1rem; display: block; text-align: center; }
+      .pres-info { flex-direction: column; gap: 1.25rem; }
+      .pres-info-divider { display: none; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">NOVA <span>· Flow</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#prestations">Soins</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#resa">Réserver</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-circle" style="width:480px;height:480px;"></div>
+  <div class="hero-circle" style="width:700px;height:700px;border-color:rgba(201,168,76,0.05);"></div>
+  <div class="hero-content">
+    <div style="margin-bottom:1.5rem;">
+      <svg viewBox="0 0 400 200" width="340" height="170" style="display:block;margin:0 auto;">
+        <defs>
+          <style>@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&amp;family=Raleway:wght@300;400;500;600&amp;display=swap');</style>
+        </defs>
+        <g transform="translate(82, 0)">
+          <circle cx="72" cy="72" r="10" fill="none" stroke="#D4A020" stroke-width="2.2"/>
+          <line x1="72" y1="57" x2="72" y2="52" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="72" y1="87" x2="72" y2="92" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="57" y1="72" x2="52" y2="72" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="87" y1="72" x2="92" y2="72" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="61.8" y1="61.8" x2="57.5" y2="57.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="82.2" y1="82.2" x2="86.5" y2="86.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="82.2" y1="61.8" x2="86.5" y2="57.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="61.8" y1="82.2" x2="57.5" y2="86.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+          <line x1="108" y1="52" x2="108" y2="92" stroke="#D4A020" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+          <path d="M120 78 C134 58, 150 88, 164 68 C172 56, 180 62, 184 66" stroke="#D4A020" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M120 86 C134 68, 150 98, 164 80 C172 68, 180 74, 184 78" stroke="#3A6647" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </g>
+        <text x="28" y="140" font-family="'Cormorant Garamond', serif" font-weight="700" font-size="52" letter-spacing="10" fill="#F5F0E8">NOVA</text>
+        <circle cx="209" cy="128" r="5" fill="#D4A020"/>
+        <text x="222" y="140" font-family="'Cormorant Garamond', serif" font-weight="400" font-style="italic" font-size="52" letter-spacing="8" fill="#D4A020">Flow</text>
+        <line x1="48" y1="163" x2="98" y2="163" stroke="#D4A020" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="302" y1="163" x2="352" y2="163" stroke="#D4A020" stroke-width="1.2" stroke-linecap="round"/>
+        <text x="200" y="168" font-family="'Raleway', sans-serif" font-weight="600" font-size="13" letter-spacing="6" fill="#D4A020" text-anchor="middle">MASSOTHÉRAPIE</text>
+        <text x="200" y="186" font-family="'Raleway', sans-serif" font-weight="300" font-size="12" letter-spacing="5" fill="rgba(245,240,232,0.5)" text-anchor="middle">LÉA SERRANO</text>
+      </svg>
+    </div>
+    <p class="hero-tagline">Prenez soin de votre corps,<br>il est le seul endroit où vous êtes obligé de vivre.</p>
+    <div class="hero-keywords">
+      <span>Deep tissue</span><span class="dot">·</span>
+      <span>Sportif</span><span class="dot">·</span>
+      <span>Récupération</span><span class="dot">·</span>
+      <span>Suivi personnalisé</span>
+    </div>
+    <a href="#resa" class="btn-gold">Prendre rendez-vous</a>
+    <a href="#prestations" class="btn-outline">Découvrir les soins</a>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">À propos</div>
+        <h2 class="section-title" style="text-align:left;">Votre corps est<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;">votre outil de travail</em></h2>
+        <div class="section-sep" style="margin-left:0;"></div>
+        <p>Diplômée de l'EIBE et formée à l'international, j'exerce la massothérapie avec une approche musculaire précise et ciblée. Mon travail va au-delà du simple massage : j'identifie les tensions, je les traite en profondeur et je vous accompagne pour qu'elles ne reviennent pas.</p>
+        <p>Passionnée de sports extrêmes — VTT, snowboard, surf — je connais les contraintes que ces pratiques imposent au corps. Les impacts, les chutes, les vibrations, les positions engagées : je sais exactement ce que vos muscles traversent parce que je le vis aussi.</p>
+        <div class="canada-badge">
+          <div class="badge-label">Ma spécialité</div>
+          <p>J'accompagne les athlètes et pratiquants de sports intenses dans leur préparation et leur récupération. Deep tissue, étirements profonds, mobilisation musculaire — un travail ciblé pour un corps qui performe et qui dure.</p>
+        </div>
+        <p>Je travaille en binôme avec des kinésithérapeutes, ostéopathes et préparateurs physiques pour une prise en charge optimale. Que vous soyez sportif de haut niveau ou du dimanche, votre corps mérite un vrai suivi.</p>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">EIBE</div>
+            <div class="stat-label">Diplôme reconnu</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">Deep</div>
+            <div class="stat-label">Tissue spécialisée</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-inner">
+          <div style="margin-bottom:1rem;">
+            <svg viewBox="60 40 210 60" width="160" height="50" style="display:block;margin:0 auto;">
+              <g transform="translate(82, 0)">
+                <circle cx="72" cy="72" r="10" fill="none" stroke="#D4A020" stroke-width="2.2"/>
+                <line x1="72" y1="57" x2="72" y2="52" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="72" y1="87" x2="72" y2="92" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="57" y1="72" x2="52" y2="72" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="87" y1="72" x2="92" y2="72" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="61.8" y1="61.8" x2="57.5" y2="57.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="82.2" y1="82.2" x2="86.5" y2="86.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="82.2" y1="61.8" x2="86.5" y2="57.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="61.8" y1="82.2" x2="57.5" y2="86.5" stroke="#D4A020" stroke-width="2" stroke-linecap="round"/>
+                <line x1="108" y1="52" x2="108" y2="92" stroke="#D4A020" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+                <path d="M120 78 C134 58, 150 88, 164 68 C172 56, 180 62, 184 66" stroke="#D4A020" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M120 86 C134 68, 150 98, 164 80 C172 68, 180 74, 184 78" stroke="#F5F0E8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <div class="av-name">Léa Serrano</div>
+          <div class="av-title">Praticienne en massothérapie</div>
+          <div class="av-sep"></div>
+          <div class="av-tagline">Relâcher le corps.<br>Rééquilibrer.<br>Prévenir.</div>
+          <div class="av-section">
+            <div class="av-section-label">Formation</div>
+            <p>Diplômée de l'EIBE<br>Spécialisée deep tissue & sportif</p>
+          </div>
+          <div class="av-section">
+            <div class="av-section-label">Spécialités</div>
+            <p>Travail musculaire profond<br>Étirements & mobilisation<br>Récupération sports extrêmes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESTATIONS -->
+<section id="prestations" class="prestations-bg">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--or);">Les prestations</div>
+    <h2 class="section-title" style="color:var(--creme);">Séances adaptées<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;">à vos besoins</em></h2>
+    <div class="section-sep"></div>
+    <div class="pres-grid">
+      <div class="pres-card">
+        <div class="pres-num">01</div>
+        <div class="pres-name">Séance personnalisée</div>
+        <p class="pres-desc">Bilan musculaire en début de séance. Travail en profondeur : deep tissue, étirements, mobilisation articulaire, trigger points. Adaptée à votre sport et vos objectifs — récupération post-ride, préparation de saison ou soulagement chronique.</p>
+        <div class="pres-tags">
+          <span class="ptag">Deep tissue</span>
+          <span class="ptag">Sportif</span>
+          <span class="ptag">Étirements</span>
+          <span class="ptag">Trigger points</span>
+          <span class="ptag">Relaxation</span>
+        </div>
+      </div>
+      <div class="pres-card">
+        <div class="pres-num">02</div>
+        <div class="pres-name">Drainage lymphatique</div>
+        <p class="pres-desc">Technique précise pour stimuler la circulation lymphatique, réduire les gonflements et favoriser la récupération. Idéal après l'effort, en post-opératoire ou pour soutenir l'immunité.</p>
+        <div class="pres-tags">
+          <span class="ptag">Circulation</span>
+          <span class="ptag">Récupération</span>
+          <span class="ptag">Détox</span>
+          <span class="ptag">Post-effort</span>
+        </div>
+      </div>
+    </div>
+    <div class="pres-info">
+      <div class="pres-info-col">
+        <div class="pres-info-label">Zones ciblées</div>
+        <div class="pres-info-val">Nuque · Dos · Lombaires · Épaules<br>Chaînes musculaires · Fascias</div>
+      </div>
+      <div class="pres-info-divider"></div>
+      <div class="pres-info-col">
+        <div class="pres-info-label">Sports accompagnés</div>
+        <div class="pres-info-val">VTT · Snowboard · Surf · Sports extrêmes<br>Course · Musculation · CrossFit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section id="tarifs">
+  <div class="section-inner">
+    <div class="section-label">Tarifs</div>
+    <h2 class="section-title">Investir dans<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;">votre bien-être</em></h2>
+    <div class="section-sep"></div>
+    <div class="tarifs-grid">
+      <div class="tcard">
+        <div class="tdur">60 minutes</div>
+        <div class="tprice"><sup>€</sup>60</div>
+        <div class="tnote">Séance personnalisée<br>ou drainage lymphatique</div>
+      </div>
+      <div class="tcard">
+        <div class="tdur">90 minutes</div>
+        <div class="tprice"><sup>€</sup>85</div>
+        <div class="tnote">Séance approfondie<br>avec bilan complet</div>
+      </div>
+      <div class="tcard featured">
+        <div class="feat-badge">Meilleure valeur</div>
+        <div class="tdur">Pack 5 séances</div>
+        <div class="tprice"><sup>€</sup>270</div>
+        <div class="tnote">60 min · Suivi régulier<br>personnalisé</div>
+        <div class="teco">Économie de 30 €</div>
+      </div>
+    </div>
+    <p class="tarifs-disclaimer">Ne remplace en aucun cas un suivi médical ou paramédical · Complément des kinésithérapeutes et ostéopathes</p>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="#resa" class="btn-gold">Réserver une séance</a>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSERVATION -->
+<section id="resa" class="resa-bg">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--or);">Rendez-vous</div>
+    <h2 class="section-title" style="color:var(--creme);">Réservation<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;">en ligne</em></h2>
+    <div class="section-sep"></div>
+    <div class="resa-form" style="max-width:640px;margin:0 auto;">
+      <form action="https://formspree.io/f/xdaygqry" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Prénom *</label>
+            <input type="text" name="prenom" required placeholder="Votre prénom">
+          </div>
+          <div class="form-group">
+            <label>Nom *</label>
+            <input type="text" name="nom" required placeholder="Votre nom">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" name="email" required placeholder="votre@email.com">
+          </div>
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" name="telephone" placeholder="06 00 00 00 00">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Prestation souhaitée *</label>
+          <select name="prestation" required>
+            <option value="">Choisir...</option>
+            <option>Séance personnalisée 60 min — 60 €</option>
+            <option>Séance approfondie 90 min — 85 €</option>
+            <option>Drainage lymphatique 60 min — 60 €</option>
+            <option>Pack 5 séances — 270 €</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Disponibilités souhaitées *</label>
+          <input type="text" name="disponibilites" required placeholder="Ex : lundi matin, jeudi après-midi…">
+        </div>
+        <div class="form-group">
+          <label>Message (facultatif)</label>
+          <textarea name="message" placeholder="Zone douloureuse, objectif sportif, question particulière…"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Nouvelle demande de réservation — Nova Flow">
+        <input type="hidden" name="_next" value="https://novaflow-massotherapie.fr#resa">
+        <button type="submit" class="form-submit">Envoyer ma demande</button>
+        <p class="form-note">Léa vous recontacte sous 24h pour confirmer votre créneau</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Retrouvez-moi<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;">au cabinet</em></h2>
+    <div class="section-sep"></div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-8-6.5-8-12a8 8 0 0116 0c0 5.5-8 12-8 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Adresse</div>
+            <div class="contact-val">Cabinet 24 · Pôle Santé Henri Arnault<br>3 rue Marie Curie<br>81370 Saint-Sulpice-la-Pointe</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val"><a href="mailto:novaflow.massotherapie@gmail.com" style="color:var(--vert);text-decoration:none;">novaflow.massotherapie@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="18" r="1" fill="#C9A84C" stroke="none"/></svg>
+          </div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-val">
+              <a href="https://instagram.com/NovaFlow81370" target="_blank" style="color:var(--vert);text-decoration:none;">@NovaFlow81370</a><br>
+              <span style="font-size:11px;color:var(--or);">Conseils bien-être & actualités</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-map">
+        <h3>Pôle Santé<br><em>Henri Arnault</em></h3>
+        <div class="contact-map-sep"></div>
+        <div class="contact-map-addr">
+          Cabinet 24<br>
+          3 rue Marie Curie<br>
+          81370 Saint-Sulpice-la-Pointe
+        </div>
+        <a href="#resa" class="btn-gold" style="font-size:9px;">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">NOVA <span>· Flow</span></div>
+  <div class="footer-copy">Massothérapie & Accompagnement du corps · Léa Serrano · Saint-Sulpice-la-Pointe</div>
+</footer>
+
+</body>
+</html>
