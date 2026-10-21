@@ -1,0 +1,55 @@
+# Nova Flow — Massothérapie
+> Massothérapeute à Saint-Sulpice-la-Pointe (81370), 20 minutes de Toulouse.
+> Léa Serrano — Diplômée EIBE, certifiée drainage lymphatique méthode Vodder, certifiée massage suédois ASM.
+> Tél : 07 59 94 62 51 · novaflow.massotherapie@gmail.com · novaflow-massotherapie.fr
+
+## Qui est Nova Flow ?
+
+Nova Flow Massothérapie est le cabinet de Léa Serrano, massothérapeute diplômée installée à Saint-Sulpice-la-Pointe (Tarn, 81370), à 20 minutes de Toulouse. Elle propose des soins de massage et de drainage lymphatique, avec une spécialité en accompagnement des sportifs de compétition (HYROX, triathlon, marathon) et en drainage lymphatique méthode Vodder certifiée.
+
+## Prestations et tarifs
+
+- **Séance sur-mesure 60 min — 60 €** : massage ciblé deep tissue, trigger points, mobilisation articulaire. Adapté à la zone prioritaire du moment.
+- **Séance approfondie 90 min — 90 €** : séance complète intégrant deep tissue, fascias, système nerveux, mobilisation. Idéal pour le suivi compétition HYROX, triathlon, marathon.
+- **Drainage lymphatique Vodder — zone partielle 60 min — 60 €** : dos ou jambes. Jambes lourdes, rétention d'eau, récupération.
+- **Drainage lymphatique Vodder — corps entier 90 min — 90 €** : drainage complet de la tête aux pieds.
+- **Pack fidélité : 5 séances + 1 offerte — 450 €** : drainage Vodder corps entier 90 min. Valeur 540 €.
+
+TVA non applicable — article 293B du CGI.
+
+## Spécialités
+
+### Massage sportif deep tissue
+Approche en 3 phases selon le cycle sportif :
+- **Préparation** (avant compétition) : massage léger et dynamique pour réveiller les muscles, activer la circulation sans déstabiliser la proprioception.
+- **Récupération** (post-effort) : relâchement, drainage léger, apaisement du système nerveux parasympathique.
+- **Entretien** (hors compétition) : deep tissue profond, libération des fascias sur chaînes complètes, rééquilibrage postural, trigger points.
+
+Techniques utilisées : deep tissue, trigger points, relâchement des fascias, étirements et mobilisation articulaire (intégrés tout au long de la séance).
+
+### Drainage lymphatique méthode Vodder
+Technique créée par Emil et Estrid Vodder en 1936. Mouvements doux, rythmés, sans pression forte, suivant le trajet anatomique de la lymphe.
+Indications : jambes lourdes, rétention d'eau, cellulite aqueuse, peau terne, eczéma, immunité renforcée, récupération post-effort, détente profonde.
+Contre-indications : grossesse (1er trimestre), allaitement, traitement cancéreux en cours, état fébrile, pathologies cardiaques/hépatiques/rénales sévères, hypertension non contrôlée.
+
+## Cabinet
+
+- **Adresse** : 3 rue Marie Curie, Cabinet 24, Pôle Santé Henri Arnault, Saint-Sulpice-la-Pointe (81370)
+- **À proximité** : Toulouse (20 min), Montastruc-la-Conseillère, Garidech, Buzet-sur-Tarn
+- **Horaires** : lundi au samedi, sur rendez-vous uniquement
+- **Réservation** : en ligne sur novaflowmassotherapie.setmore.com ou par téléphone
+
+## Pages du site
+
+- `/` — Page d'accueil : présentation, soins, tarifs, avis clients, contact
+- `/massage-sportif.html` — Massage sportif deep tissue : protocole, techniques, profils sportifs
+- `/drainage-lymphatique.html` — Drainage lymphatique méthode Vodder : histoire, méthode, bienfaits, contre-indications
+- `/faq.html` — Questions fréquentes : séances, massage sportif, drainage, infos pratiques
+- `/sitemap.xml` — Plan du site
+
+## Formations et certifications
+
+- Diplômée EIBE (École Internationale de Bien-Être)
+- Certifiée drainage lymphatique méthode Vodder
+- Certifiée massage suédois ASM
+- Formations en cours : pierres chaudes, cupping
