@@ -3,6 +3,7 @@ description: Massage deep tissue et drainage lymphatique Vodder à Saint-Sulpice
 url: "https://www.novaflow-massotherapie.fr"
 baseurl: ""
 
+
 # Jekyll
 markdown: kramdown
 permalink: /blog/:slug/
