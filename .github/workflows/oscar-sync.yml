@@ -1,0 +1,133 @@
+name: Sync articles Oscar
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Toutes les nuits à 6h du matin
+  workflow_dispatch:       # Permet de lancer manuellement
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Récupérer et publier les articles Oscar
+        env:
+          OSCAR_API_KEY: ${{ secrets.OSCAR_API_KEY }}
+        run: |
+          node -e "
+          const https = require('https');
+          const fs = require('fs');
+          const path = require('path');
+
+          const apiKey = process.env.OSCAR_API_KEY;
+          const postsDir = '_posts';
+
+          if (!fs.existsSync(postsDir)) fs.mkdirSync(postsDir);
+
+          function fetchArticles(cursor) {
+            return new Promise((resolve, reject) => {
+              const url = cursor
+                ? 'https://beta-api.oscar-seo.ai/v1/articles?pageSize=10&cursor=' + cursor
+                : 'https://beta-api.oscar-seo.ai/v1/articles?pageSize=10';
+
+              const options = {
+                headers: { 'Authorization': 'Bearer ' + apiKey }
+              };
+
+              https.get(url, options, (res) => {
+                let data = '';
+                res.on('data', chunk => data += chunk);
+                res.on('end', () => resolve(JSON.parse(data)));
+              }).on('error', reject);
+            });
+          }
+
+          function slugToFilename(slug, date) {
+            const d = new Date(date);
+            const dateStr = d.toISOString().split('T')[0];
+            return dateStr + '-' + slug + '.md';
+          }
+
+          function htmlToMarkdown(html) {
+            return html
+              .replace(/<div[^>]*>/g, '')
+              .replace(/<\/div>/g, '')
+              .replace(/<h2[^>]*>(.*?)<\/h2>/g, '\n## $1\n')
+              .replace(/<h3[^>]*>(.*?)<\/h3>/g, '\n### $1\n')
+              .replace(/<p[^>]*>(.*?)<\/p>/g, '\n$1\n')
+              .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
+              .replace(/<em>(.*?)<\/em>/g, '*$1*')
+              .replace(/<ul[^>]*>/g, '')
+              .replace(/<\/ul>/g, '')
+              .replace(/<li[^>]*>(.*?)<\/li>/g, '- $1')
+              .replace(/<[^>]+>/g, '')
+              .replace(/&amp;/g, '&')
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&nbsp;/g, ' ')
+              .replace(/\n{3,}/g, '\n\n')
+              .trim();
+          }
+
+          async function main() {
+            let cursor = null;
+            let totalPublished = 0;
+
+            do {
+              const response = await fetchArticles(cursor);
+              const articles = response.data || [];
+
+              for (const article of articles) {
+                if (article.status !== 'ready') continue;
+
+                const filename = slugToFilename(article.slug, article.createdAt);
+                const filepath = path.join(postsDir, filename);
+
+                if (fs.existsSync(filepath)) continue;
+
+                const content = htmlToMarkdown(article.html || '');
+                const date = new Date(article.createdAt).toISOString().split('T')[0];
+
+                const frontmatter = [
+                  '---',
+                  'layout: post',
+                  'title: \"' + article.title.replace(/\"/g, '\\\"') + '\"',
+                  'description: \"' + (article.metaDescription || '').replace(/\"/g, '\\\"') + '\"',
+                  'date: ' + date,
+                  'category: \"Bien-être & Massage\"',
+                  'read_time: \"5 min\"',
+                  '---',
+                  ''
+                ].join('\n');
+
+                fs.writeFileSync(filepath, frontmatter + content);
+                console.log('Publié : ' + filename);
+                totalPublished++;
+              }
+
+              cursor = response.hasMore ? response.nextCursor : null;
+            } while (cursor);
+
+            console.log('Total publié : ' + totalPublished + ' article(s)');
+          }
+
+          main().catch(err => { console.error(err); process.exit(1); });
+          "
+
+      - name: Commit et push
+        run: |
+          git config user.name "Oscar Sync Bot"
+          git config user.email "bot@novaflow-massotherapie.fr"
+          git add _posts/
+          git diff --staged --quiet || git commit -m "Articles Oscar du $(date +'%Y-%m-%d')"
+          git push
