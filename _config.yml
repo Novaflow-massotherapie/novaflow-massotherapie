@@ -1,0 +1,19 @@
+title: Nova Flow Massothérapie
+description: Massage deep tissue et drainage lymphatique Vodder à Saint-Sulpice-la-Pointe
+url: "https://www.novaflow-massotherapie.fr"
+baseurl: ""
+
+# Jekyll
+markdown: kramdown
+permalink: /blog/:slug/
+
+# Plugins GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclure de la génération
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
