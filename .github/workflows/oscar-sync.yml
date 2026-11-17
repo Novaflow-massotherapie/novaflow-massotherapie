@@ -114,5 +114,4 @@ jobs:
           git config user.email "bot@novaflow-massotherapie.fr"
           git add _posts/
           git diff --staged --quiet || git commit -m "Articles Oscar du $(date +'%Y-%m-%d')"
-          git pull --rebase origin main
-          git push
+          git push origin main --force-with-lease
