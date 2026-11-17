@@ -66,6 +66,13 @@ jobs:
                 if (fs.existsSync(filepath)) continue;
                 const title = (article.title || '').replace(/"/g, '\\"');
                 const desc = (article.metaDescription || '').replace(/"/g, '\\"');
+                // Nettoyer le HTML Oscar : enlever <style> et wrapper <div class="oscar-article">
+                let html = article.html || '';
+                html = html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+                html = html.replace(/<div[^>]*class="oscar-article"[^>]*>/gi, '');
+                html = html.replace(/<\/div>\s*$/gi, '');
+                html = html.trim();
+
                 const fileContent =
                   '---\n' +
                   'layout: post\n' +
@@ -75,7 +82,7 @@ jobs:
                   'category: "Bien-être & Massage"\n' +
                   'read_time: "5 min"\n' +
                   '---\n\n' +
-                  (article.html || '');
+                  html;
                 fs.writeFileSync(filepath, fileContent);
                 console.log('Publié : ' + filename);
                 totalPublished++;
