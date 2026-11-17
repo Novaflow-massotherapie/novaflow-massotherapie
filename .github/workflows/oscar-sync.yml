@@ -2,16 +2,14 @@ name: Sync articles Oscar
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Toutes les nuits à 6h du matin
-  workflow_dispatch:       # Permet de lancer manuellement
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout repo
@@ -22,7 +20,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Récupérer et publier les articles Oscar
+      - name: Récupérer les articles Oscar
         env:
           OSCAR_API_KEY: ${{ secrets.OSCAR_API_KEY }}
         run: |
@@ -41,11 +39,7 @@ jobs:
               const url = cursor
                 ? 'https://beta-api.oscar-seo.ai/v1/articles?pageSize=10&cursor=' + cursor
                 : 'https://beta-api.oscar-seo.ai/v1/articles?pageSize=10';
-
-              const options = {
-                headers: { 'Authorization': 'Bearer ' + apiKey }
-              };
-
+              const options = { headers: { 'Authorization': 'Bearer ' + apiKey } };
               https.get(url, options, (res) => {
                 let data = '';
                 res.on('data', chunk => data += chunk);
@@ -57,63 +51,46 @@ jobs:
             });
           }
 
-          function slugToFilename(slug, date) {
-            const d = new Date(date);
-            const dateStr = d.toISOString().split('T')[0];
-            return dateStr + '-' + slug + '.md';
-          }
-
           async function main() {
             let cursor = null;
             let totalPublished = 0;
-
             do {
               const response = await fetchArticles(cursor);
               const articles = response.data || [];
-
               for (const article of articles) {
                 if (article.status !== 'ready') continue;
-
-                const filename = slugToFilename(article.slug, article.createdAt);
+                const d = new Date(article.createdAt);
+                const dateStr = d.toISOString().split('T')[0];
+                const filename = dateStr + '-' + article.slug + '.md';
                 const filepath = path.join(postsDir, filename);
-
                 if (fs.existsSync(filepath)) continue;
-
-                const date = new Date(article.createdAt).toISOString().split('T')[0];
                 const title = (article.title || '').replace(/"/g, '\\"');
                 const desc = (article.metaDescription || '').replace(/"/g, '\\"');
-                const html = article.html || '';
-
                 const fileContent =
                   '---\n' +
                   'layout: post\n' +
                   'title: "' + title + '"\n' +
                   'description: "' + desc + '"\n' +
-                  'date: ' + date + '\n' +
+                  'date: ' + dateStr + '\n' +
                   'category: "Bien-être & Massage"\n' +
                   'read_time: "5 min"\n' +
                   '---\n\n' +
-                  html;
-
+                  (article.html || '');
                 fs.writeFileSync(filepath, fileContent);
                 console.log('Publié : ' + filename);
                 totalPublished++;
               }
-
               cursor = (response.hasMore && response.nextCursor) ? response.nextCursor : null;
             } while (cursor);
-
-            console.log('Total publié : ' + totalPublished + ' article(s)');
+            console.log('Total : ' + totalPublished + ' article(s)');
           }
 
           main().catch(err => { console.error(err); process.exit(1); });
           SCRIPT
           node /tmp/oscar-sync.js
 
-      - name: Commit et push
-        run: |
-          git config user.name "Oscar Sync Bot"
-          git config user.email "bot@novaflow-massotherapie.fr"
-          git add _posts/
-          git diff --staged --quiet || git commit -m "Articles Oscar du $(date +'%Y-%m-%d')"
-          git push origin HEAD:main --force
+      - name: Commit automatique
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Articles Oscar du ${{ github.run_started_at }}"
+          file_pattern: '_posts/*.md'
