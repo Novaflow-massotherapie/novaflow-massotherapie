@@ -24,7 +24,7 @@ jobs:
         env:
           OSCAR_API_KEY: ${{ secrets.OSCAR_API_KEY }}
         run: |
-          node -e "
+          cat > /tmp/oscar-sync.js << 'SCRIPT'
           const https = require('https');
           const fs = require('fs');
           const path = require('path');
@@ -47,7 +47,10 @@ jobs:
               https.get(url, options, (res) => {
                 let data = '';
                 res.on('data', chunk => data += chunk);
-                res.on('end', () => resolve(JSON.parse(data)));
+                res.on('end', () => {
+                  try { resolve(JSON.parse(data)); }
+                  catch(e) { reject(new Error('JSON parse error: ' + data)); }
+                });
               }).on('error', reject);
             });
           }
@@ -56,27 +59,6 @@ jobs:
             const d = new Date(date);
             const dateStr = d.toISOString().split('T')[0];
             return dateStr + '-' + slug + '.md';
-          }
-
-          function htmlToMarkdown(html) {
-            return html
-              .replace(/<div[^>]*>/g, '')
-              .replace(/<\/div>/g, '')
-              .replace(/<h2[^>]*>(.*?)<\/h2>/g, '\n## $1\n')
-              .replace(/<h3[^>]*>(.*?)<\/h3>/g, '\n### $1\n')
-              .replace(/<p[^>]*>(.*?)<\/p>/g, '\n$1\n')
-              .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
-              .replace(/<em>(.*?)<\/em>/g, '*$1*')
-              .replace(/<ul[^>]*>/g, '')
-              .replace(/<\/ul>/g, '')
-              .replace(/<li[^>]*>(.*?)<\/li>/g, '- $1')
-              .replace(/<[^>]+>/g, '')
-              .replace(/&amp;/g, '&')
-              .replace(/&lt;/g, '<')
-              .replace(/&gt;/g, '>')
-              .replace(/&nbsp;/g, ' ')
-              .replace(/\n{3,}/g, '\n\n')
-              .trim();
           }
 
           async function main() {
@@ -95,34 +77,36 @@ jobs:
 
                 if (fs.existsSync(filepath)) continue;
 
-                const content = htmlToMarkdown(article.html || '');
                 const date = new Date(article.createdAt).toISOString().split('T')[0];
+                const title = (article.title || '').replace(/"/g, '\\"');
+                const desc = (article.metaDescription || '').replace(/"/g, '\\"');
+                const html = article.html || '';
 
-                const frontmatter = [
-                  '---',
-                  'layout: post',
-                  'title: \"' + article.title.replace(/\"/g, '\\\"') + '\"',
-                  'description: \"' + (article.metaDescription || '').replace(/\"/g, '\\\"') + '\"',
-                  'date: ' + date,
-                  'category: \"Bien-être & Massage\"',
-                  'read_time: \"5 min\"',
-                  '---',
-                  ''
-                ].join('\n');
+                const fileContent =
+                  '---\n' +
+                  'layout: post\n' +
+                  'title: "' + title + '"\n' +
+                  'description: "' + desc + '"\n' +
+                  'date: ' + date + '\n' +
+                  'category: "Bien-être & Massage"\n' +
+                  'read_time: "5 min"\n' +
+                  '---\n\n' +
+                  html;
 
-                fs.writeFileSync(filepath, frontmatter + content);
+                fs.writeFileSync(filepath, fileContent);
                 console.log('Publié : ' + filename);
                 totalPublished++;
               }
 
-              cursor = response.hasMore ? response.nextCursor : null;
+              cursor = (response.hasMore && response.nextCursor) ? response.nextCursor : null;
             } while (cursor);
 
             console.log('Total publié : ' + totalPublished + ' article(s)');
           }
 
           main().catch(err => { console.error(err); process.exit(1); });
-          "
+          SCRIPT
+          node /tmp/oscar-sync.js
 
       - name: Commit et push
         run: |
